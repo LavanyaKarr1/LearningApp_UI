@@ -27,7 +27,9 @@ const Login = () => {
         onSubmit: async (values) => {
             try {
                 // console.log("API URL: ", ApiUrls.contextURL+"login");
-                const loginResponse = await commonAxios.post(ApiUrls.contextURL + "login", values);
+                const loginResponse = await commonAxios.post(ApiUrls.contextURL + "login", values,{
+                     withCredentials: true
+                });
                 // console.log("loginResponse.data.success >>>>>",loginResponse.data.success );
                 // console.log("Full API Response:", loginResponse);
                 if (loginResponse.data.success === true) {
@@ -38,6 +40,7 @@ const Login = () => {
                     localStorage.setItem("candidateName", decodedToken.username);
                     localStorage.setItem("tokenExpiration", decodedToken.exp * 1000);
                     // console.log("tokenExpiration>>>",new Date(decodedToken.exp * 1000));
+                
 
                     Swal.fire({
                         text: loginResponse.data.message,
@@ -84,7 +87,7 @@ const Login = () => {
                         <div className="row  mb-5">
                             <label className="form-label">Password</label>
                             <div className="input-group">
-                                <Field type={showPassword ? "text" : "password"} name="password" className="form-control"/>
+                                <Field type={showPassword ? "text" : "password"} name="password" className="form-control" />
                                 <span
                                     className="input-group-text"
                                     onClick={() => setShowPassword(!showPassword)}

@@ -48,6 +48,17 @@ const DistrictReport = () => {
         navigate("/home")
     }
 
+    const formik2=useFormik({
+        initialValues:{
+            mobile:'',
+            remarks:''
+        }
+    })
+
+    const updateDetails=()=>{
+
+    }
+
     return (
         <>
             <div className=" border container  d-flex flex-column align-items-center mt-5">
@@ -55,14 +66,7 @@ const DistrictReport = () => {
                 <FormikProvider value={formik}>
                     <Form onSubmit={formik.handleSubmit}>
 
-                        {/* <div className="  container d-flex flex row">
-                                <div className="  col">
-                                <h4 className="text-center mt-3">District Report</h4>
-                                </div>
-                                <div className="  col">
-                                <button type="button" className="mt-3 float-end" onClick={handleBack}>Back</button>
-                                </div>
-                            </div> */}
+                        
                         <h5 className="mt-3">District Report</h5>
                     <div className="w-100 d-flex justify-content-end mt-3">
                         <button
@@ -114,6 +118,8 @@ const DistrictReport = () => {
                                         <th>Aadhar</th>
                                         <th>Email</th>
                                         <th>Address</th>
+                                        <th>Remarks</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -125,6 +131,14 @@ const DistrictReport = () => {
                                             <td>{user.uid}</td>
                                             <td>{user.email}</td>
                                             <td>{`${user.dist_name}, ${user.mandal_name}, ${user.village_name}, ${user.street}, ${user.door_no} - ${user.pin_code}`}</td>
+                                            <td>{(<>
+                                            <FormikProvider value={formik2}>
+                                            <Form onSubmit={formik2.handleSubmit}>
+                                            <Field type="textarea" name="remarks" />
+                                            </Form>
+                                            </FormikProvider>
+                                            </>)}</td>
+                                            <td><button className="btn btn-primary" type="submit">Update</button></td>
                                         </tr>
                                     ))}
                                 </tbody>

@@ -11,6 +11,7 @@ import DistrictReport from "../components/reports/DistrictReport";
 import AgeCalculator from "../components/AgeCalculator";
 import CountDownTimer from "../components/CountDownTimer";
 import StudyDetails from "../components/StudyDetails";
+import StudyDetails2 from "../components/StudyDetails2";
 
 const RoutesComponent = () => {
 
@@ -19,7 +20,7 @@ const RoutesComponent = () => {
 
     return (
         <BrowserRouter>
-         <SessionExpirationHandler />
+         {/* <SessionExpirationHandler /> */}
             <Routes>
                 <Route path='/registration' element={<Registration />} />
                 <Route path='/' element={<Login/>} />
@@ -33,6 +34,7 @@ const RoutesComponent = () => {
                 <Route path='/ageCalcualtor' element={<AgeCalculator/>} />
                 <Route path='/timer' element={<CountDownTimer/>} />
                 <Route path='/StudyDetails' element={<StudyDetails/>} />
+                <Route path='/StudyDetails2' element={<StudyDetails2/>} />
                 
             </Routes>
         </BrowserRouter>

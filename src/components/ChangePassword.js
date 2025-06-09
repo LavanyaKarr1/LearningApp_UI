@@ -13,10 +13,14 @@ const ChangePassword = () =>{
         initialValues:{
             password:'',
             username:'',
+            confirmPassword:''
         },
         onSubmit: async(values) =>{
+            const {confirmPassword,...fvalues}=values;
+            console.log("fvalues",fvalues);
+            
             try{
-                const changePasswordRespone=await commonAxios.post(ApiUrls.contextURL+'changePassword',values)
+                const changePasswordRespone=await commonAxios.post(ApiUrls.contextURL+'changePassword',fvalues)
                 if(changePasswordRespone.data.success === true){
                     Swal.fire({
                         text:changePasswordRespone.data.message,
@@ -54,8 +58,13 @@ const ChangePassword = () =>{
                     <Field type='text' name='username' className='form-control'></Field>
                 </div>
                 <div className="row mt-5 mb-5">
-                    <label className="form-label">New password</label>
+                    <label className="form-label">New Password</label>
                     <Field type='password' className='form-control' name='password'></Field>
+
+                </div>
+                <div className="row mt-5 mb-5">
+                    <label className="form-label">Confirm Password</label>
+                    <Field type='password' className='form-control' name='confirmPassword'></Field>
 
                 </div>
                 <button type='submit' className="btn btn-primary mb-4">Change Password</button>

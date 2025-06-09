@@ -29,7 +29,8 @@ const Home = () => {
         const root = createRoot(div);
         Swal.fire({
             title:'Profile Details',
-            html: div,
+            text:'User Name :'+candidateName,
+            html: `<p>User Name: ${candidateName}</p>`,
             showConfirmButton: false,
             showCloseButton: true,
         });
@@ -48,6 +49,7 @@ const Home = () => {
             html: div,
             showConfirmButton: false,
             showCloseButton: true,
+            allowOutsideClick:false
         });
 
         root.render(
